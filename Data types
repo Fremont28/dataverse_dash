@@ -1,0 +1,12 @@
+
+def main():
+
+def  classify_data(test_data):
+    all_types=['int','str','float','Boolean']
+    for dtype in all_types:
+        if isinstance(test_data,dtype):
+            break
+            return dtype 
+
+if __name__ == '__main__':
+    main()
