@@ -1,3 +1,6 @@
+# When you create a python script, it should have no spaces in the
+# filename and the file extension should be ".py" rather than ".txt"
+
 def main():
 
     test_data= "october"
@@ -14,7 +17,7 @@ def data_classifier(test_data):
     else:
         print('') 
 
-data_classifier(test_data)
+data_classifier(test_data) # this line should be inside the main function
 
 if __name__ == '__main__':
     main()
