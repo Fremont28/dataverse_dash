@@ -5,7 +5,7 @@ def main():
 test1=45
 test2="October"
 test3=16.74
-test4=True
+
 
 data_classifier(test1)
 
