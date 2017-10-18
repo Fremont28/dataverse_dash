@@ -7,7 +7,7 @@ test2="October"
 test3=16.74
 test4=True
 
-data_classifier(test2)
+data_classifier(test1)
 
 def data_classifier(test1):
     if isinstance(test1,int):
