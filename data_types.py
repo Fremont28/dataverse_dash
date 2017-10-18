@@ -2,17 +2,21 @@
 #function that classifies different data types 
 def main():
 
-    test_data= "october"
-    data_classifier(test_data)
+test1=45
+test2="October"
+test3=16.74
+test4=True
 
-def data_classifier(test_data):
-    if isinstance(test_data,tuple): #(s,tuple)
-        print('tuple') 
-    if isinstance(test_data,str):
+data_classifier(test2)
+
+def data_classifier(test1):
+    if isinstance(test1,int):
+        print('int')
+    if isinstance(test1,str):
         print('str')
-    if isinstance(test_data,float):
+    if isinstance(test1,float):
         print('float')
-    if isinstance(test_data,bool):
+    if isinstance(test1,bool):
         print('bool')
     else:
         print('') 
