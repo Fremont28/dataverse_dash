@@ -39,8 +39,10 @@ if __name__ == '__main__':
 #2. Floats (Histogram)*************
 data2=pd.read_csv('bjpols_R2.csv')
 
+
 import matplotlib.pyplot as plt 
 
+#subset the dataset for continuous data 
 sub_data2=data2['sppop_L1']
 pd.options.display.mpl_style='default'
 sub_data2.hist() 
