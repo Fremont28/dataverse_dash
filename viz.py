@@ -39,7 +39,6 @@ if __name__ == '__main__':
 #2. Floats (Histogram)*************
 data2=pd.read_csv('bjpols_R2.csv')
 
-
 import matplotlib.pyplot as plt 
 
 #subset the dataset for continuous data 
@@ -64,9 +63,26 @@ app.layout=html.H1(children=[
 if __name__ == '__main__':
     app.run_server(debug=True)
 
+#3. Categorical bar plot
 
+#barplot for countries (counts)
+data2['country'].value_counts().plot(kind="bar")
+plt.show() 
+trace3=go.Bar(x='country')
 
+app.layout=html.H1(children=[
+    html.H1(children='SPPOP_L1'),
+    dcc.Graph(
+        id='example-graph',
+        figure={
+            'data':[trace3],
+            'layout':
+            go.Layout(title='BSPPOP_L1')
+        })
+])
 
+if __name__ == '__main__':
+    app.run_server(debug=True)
 
 
 
