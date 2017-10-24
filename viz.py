@@ -44,6 +44,8 @@ app.layout = html.Div([
 if __name__ == '__main__':
     app.run_server()
 
+### this code runs properly 
+
 #2. Integers
 data2=pd.read_csv('FL-1990-births (1).csv')
 
@@ -124,7 +126,7 @@ app.layout=html.H1(children=[
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-    
+
 ### Getting a run error: "AttributeError: module 'code' has no attribute 'InteractiveInterpreter "
 
 
