@@ -45,16 +45,16 @@ if __name__ == '__main__':
     app.run_server()
 
 #2. Integers
-data1=pd.read_csv('FL-1990-births (1).csv')
+data2=pd.read_csv('FL-1990-births (1).csv')
 
 #create a bar graph
-ax=data1[['January','February']].plot(kind='bar',title="Bar",figsize=(10,5),legend=True,fontsize=12)
+ax=data2[['January','February']].plot(kind='bar',title="Bar",figsize=(10,5),legend=True,fontsize=12)
 ax.set_xlabel('Total',fontsize=12)
 ax.set_ylabel('DOB Count',fontsize=12)
 plt.show()
 
 # create an index table (for births by day in January)
-pv=pd.pivot_table(data1,index=['DOB_MM'],values=['January'],aggfunc=sum,fill_value=0)
+pv=pd.pivot_table(data2,index=['DOB_MM'],values=['January'],aggfunc=sum,fill_value=0)
 trace1=go.Bar(x=pv.index,y=pv[('January')])
 #create dash app (barplot)
 app=dash.Dash() 
@@ -72,15 +72,17 @@ app.layout=html.H1(children=[
 if __name__ == '__main__':
     app.run_server(debug=True)
 
+### Getting a run error: "AttributeError: module 'code' has no attribute 'InteractiveInterpreter "
+
 #3. Floats (Histogram)*************
-data2=pd.read_csv('bjpols_R2.csv')
+data3=pd.read_csv('bjpols_R2.csv')
 
 import matplotlib.pyplot as plt 
 
 #subset the dataset for continuous data 
-sub_data2=data2['sppop_L1']
+sub_data3=data3['sppop_L1']
 pd.options.display.mpl_style='default'
-sub_data2.hist() 
+sub_data3.hist() 
 
 #test with dash (create histogram)*****
 trace2=go.Histogram(x='sppop_L1')
@@ -100,10 +102,12 @@ app.layout=html.H1(children=[
 if __name__ == '__main__':
     app.run_server(debug=True)
 
+### Getting a run error: "AttributeError: module 'code' has no attribute 'InteractiveInterpreter "
+
 #4. Categorical bar plot
 
 #barplot for countries (counts)
-data2['country'].value_counts().plot(kind="bar")
+data3['country'].value_counts().plot(kind="bar")
 plt.show() 
 trace3=go.Bar(x='country')
 
@@ -120,7 +124,8 @@ app.layout=html.H1(children=[
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
+    
+### Getting a run error: "AttributeError: module 'code' has no attribute 'InteractiveInterpreter "
 
 
 
