@@ -44,6 +44,26 @@ app.layout = html.Div([
     )
 ])
 
+html.Div(dcc.Slider(
+        id='crossfilter-year--slider',
+        value=data1['year'],
+        step=None,
+        marks={str(year): str(year) for year in data1['year'].unique()}
+    ), style={'width': '49%', 'padding': '0px 20px 20px 20px'})
+   
+
+@app.callback(Output('slider-container','children'),[Input('button','n_clicks')])
+def add_sliders(n_clicks):
+    return html.Div(
+[dcc.Slider(id='slider-{}'.format(i)) for i in range(n_clicks)]+
+[html.Div(id='output-{}'.format(i)) for i in range(n_clicks)]
+    )
+
+for i in range(10):
+    @app.callback(Output('slider-{}'.format(i), 'children'), [Input('slider-{}'.format(i), 'value')])
+    def update_output(slider_i_value_):
+        return slider_i_value 
+
 if __name__ == '__main__':
     app.run_server()
 
