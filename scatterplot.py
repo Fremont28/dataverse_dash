@@ -51,8 +51,10 @@ html.Div(dcc.Slider(
         marks={str(year): str(year) for year in data1['year'].unique()}
     ), style={'width': '49%', 'padding': '0px 20px 20px 20px'})
    
-
+# NMB: Line 55 produces an error because Output and Input are called without
+# being defined.
 @app.callback(Output('slider-container','children'),[Input('button','n_clicks')])
+
 def add_sliders(n_clicks):
     return html.Div(
 [dcc.Slider(id='slider-{}'.format(i)) for i in range(n_clicks)]+

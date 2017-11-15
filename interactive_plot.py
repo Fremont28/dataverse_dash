@@ -30,6 +30,9 @@ app.layout = html.Div([
 @app.callback(
     dash.dependencies.Output('funnel-graph', 'figure'),
     [dash.dependencies.Input('country', 'value')])
+
+# NMB: Line 35 produces an error because you have this definition clause listed
+# twice, on line 36 and on line 39
 def update_graph(country):
 
 
@@ -52,4 +55,6 @@ def update_graph(country):
     }
 
 if __name__ == '__main__':
+    # NMB: This produces an error because Manager is called within your
+    # update_graph() function but not defined in the function definition
     app.run_server(debug=True)
