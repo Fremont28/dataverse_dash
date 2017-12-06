@@ -17,16 +17,16 @@ app.layout = html.Div([
         options=[
             {'label': var, 'value': var} for var in flights.columns
         ],
-        value=flights.columns[0],
-        placeholder='Select Variable'
+        # value=flights.columns[0],
+        placeholder='Select X-Axis Variable'
     ),
     dcc.Dropdown(
         id="yaxis",
         options=[
             {'label': var, 'value': var} for var in flights.columns
         ],
-        value=flights.columns[0],
-        placeholder='Select Variable'
+        # value=flights.columns[0],
+        placeholder='Select Y-Axis Variable'
     ),
     dcc.Graph(id='scatterplot')
 ])
@@ -39,30 +39,24 @@ app.layout = html.Div([
     ])
 def update_figure(xaxis, yaxis):
     return {
-        dcc.Graph(
-            id='scatterplot',
-            figure={
-                'data': [
-                    go.Scatter(
-                        x=flights[xaxis],
-                        y=flights[yaxis],
-                        text='Scatterplot',
-                        mode='markers',
-                        opacity=0.7,
-                        marker={
-                            'size': 15,
-                            'line': {'width': 0.5, 'color': 'white'}
+        'data': [go.Scatter(
+            x=flights[xaxis],
+            y=flights[yaxis],
+            text='Scatterplot',
+            mode='markers',
+            opacity=0.7,
+            marker={
+                'size': 15,
+                'line': {'width': 0.5, 'color': 'white'}
                         }
                     )
                 ],
-                'layout': go.Layout(
-                    xaxis={'type': 'log', 'title': 'Seats'},
-                    yaxis={'title': 'Passengers'},
-                    margin={'l': 40, 'b': 40, 't': 10, 'r': 10},
-                    legend={'x': 0, 'y': 1},
-                    hovermode='closest'
-                )
-            }
+        'layout': go.Layout(
+            xaxis={'type': 'log', 'title': xaxis},
+            yaxis={'title': yaxis},
+            margin={'l': 40, 'b': 40, 't': 10, 'r': 10},
+            legend={'x': 0, 'y': 1},
+            hovermode='closest'
         )
     }
 
