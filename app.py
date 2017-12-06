@@ -7,7 +7,8 @@ import pandas as pd
 
 
 #import dataset
-tabular=pd.read_csv("female_incumbents.csv")
+filename = input("Enter filename: ")
+tabular=pd.read_csv(filename)
 
 app = dash.Dash()
 
