@@ -7,7 +7,7 @@ import pandas as pd
 
 
 #import dataset
-flights=pd.read_csv("int_flights_us.csv")
+tabular=pd.read_csv("female_incumbents.csv")
 
 app = dash.Dash()
 
@@ -15,17 +15,15 @@ app.layout = html.Div([
     dcc.Dropdown(
         id="xaxis",
         options=[
-            {'label': var, 'value': var} for var in flights.columns
+            {'label': var, 'value': var} for var in tabular.columns
         ],
-        # value=flights.columns[0],
         placeholder='Select X-Axis Variable'
     ),
     dcc.Dropdown(
         id="yaxis",
         options=[
-            {'label': var, 'value': var} for var in flights.columns
+            {'label': var, 'value': var} for var in tabular.columns
         ],
-        # value=flights.columns[0],
         placeholder='Select Y-Axis Variable'
     ),
     dcc.Graph(id='scatterplot')
@@ -40,8 +38,8 @@ app.layout = html.Div([
 def update_figure(xaxis, yaxis):
     return {
         'data': [go.Scatter(
-            x=flights[xaxis],
-            y=flights[yaxis],
+            x=tabular[xaxis],
+            y=tabular[yaxis],
             text='Scatterplot',
             mode='markers',
             opacity=0.7,
